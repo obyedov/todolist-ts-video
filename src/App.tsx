@@ -4,23 +4,24 @@ import {TaskType, Todolist} from "./Todolist";
 
 function App() {
 
-    let tasks1: Array<TaskType> = [
+    let tasks: Array<TaskType> = [
         { id: 1, title: 'CSS', isDone : true },
         { id: 2, title: 'JS', isDone : true },
         { id: 3, title: 'React', isDone : false },
         { id: 4, title: 'Redux', isDone : false }
     ]
 
-    let tasks2: Array<TaskType> = [
-        { id: 1, title: 'Interstellar', isDone : true },
-        { id: 2, title: 'XXX', isDone : false },
-        { id: 3, title: 'Tenet', isDone : true }
-    ]
+    function removeTask (id: number) {
+        tasks = tasks.filter(t => t.id !== id)
+    }
+
 
     return (
         <div className="App">
-            <Todolist title='what to learn' tasks={tasks1}/>
-            <Todolist title='movies' tasks={tasks2}/>
+            <Todolist title='what to learn'
+                      tasks={tasks}
+                      removeTask={removeTask}
+            />
         </div>
     );
 }
